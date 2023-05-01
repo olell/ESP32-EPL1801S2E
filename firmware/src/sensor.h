@@ -19,3 +19,6 @@ void sensorInit();
 
 uint8_t sensorReadPaper();
 uint8_t sensorReadHead();
+
+float sensorReadMotorTemperature();
+float sensorReadHeadTemperature();
