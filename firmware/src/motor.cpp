@@ -14,7 +14,7 @@
 /**
  * Init motor driver
  */
-void motor_init() {
+void motorInit() {
     pinMode(PIN_MOTOR_DIRECTION, OUTPUT);
     pinMode(PIN_MOTOR_STEP, OUTPUT);
     pinMode(PIN_MOTOR_ENABLE, OUTPUT);
