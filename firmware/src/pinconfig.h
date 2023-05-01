@@ -1,3 +1,10 @@
+/**
+ * ESP32 Driver for EPL1801S2E
+ * Pin configuration
+ *
+ * (C) 2023 Ole Lange
+ */
+
 #define PIN_MOTOR_STEP 17
 #define PIN_MOTOR_DIRECTION 16
 #define PIN_MOTOR_ENABLE 5
@@ -7,3 +14,17 @@
 
 #define PIN_THERMISTOR_MOTOR 23
 #define PIN_THERMISTOR_HEAD 22
+
+#define PIN_HEAD_DATA1 4
+#define PIN_HEAD_DATA2 2
+#define PIN_HEAD_DATA3 15
+#define PIN_HEAD_DATA4 13
+#define PIN_HEAD_DATA5 14
+#define PIN_HEAD_DATA6 33
+#define PIN_HEAD_CLK 25
+#define PIN_HEAD_LAT 26
+#define PIN_HEAD_STB 27
+#define PIN_HEAD_RANK1 18
+#define PIN_HEAD_RANK2 19
+
+#define PIN_LED_STATUS 32
