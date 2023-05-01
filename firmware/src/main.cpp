@@ -6,8 +6,8 @@
  */
 
 #include <Arduino.h>
-#include <motor.h>
-#include <sensor.h>
+#include <driver/motor.h>
+#include <driver/sensor.h>
 
 void setup() {
     motorInit();

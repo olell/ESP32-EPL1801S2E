@@ -6,8 +6,8 @@
  */
 
 #include <Arduino.h>
+#include <driver/sensor.h>
 #include <pinconfig.h>
-#include <sensor.h>
 
 /**
  * Init sensor code

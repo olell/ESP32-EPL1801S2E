@@ -5,7 +5,7 @@
  * (C) 2023 Ole Lange
  */
 #include <Arduino.h>
-#include <motor.h>
+#include <driver/motor.h>
 #include <pinconfig.h>
 
 // Step On - Sleep - Step Off - Sleep
