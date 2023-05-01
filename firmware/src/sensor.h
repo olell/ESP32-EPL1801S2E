@@ -9,4 +9,4 @@
 
 #include <stdint.h>
 
-void sensor_init();
+void sensorInit();

@@ -19,20 +19,20 @@ void motor_init() {
     pinMode(PIN_MOTOR_STEP, OUTPUT);
     pinMode(PIN_MOTOR_ENABLE, OUTPUT);
 
-    motor_disable();
+    motorDisable();
 }
 
 /**
  * Make a single step in default direction
  */
-void motor_step() { motor_step(1); }
+void motorStep() { motorStep(1); }
 
 /**
  * Make the given amount in default direction
  *
  * @param steps amount of steps to do
  */
-void motor_step(uint8_t steps) { motor_step(steps, 1); }
+void motorStep(uint8_t steps) { motorStep(steps, 1); }
 
 /**
  * Make a given amount of steps in the given direction
@@ -40,7 +40,7 @@ void motor_step(uint8_t steps) { motor_step(steps, 1); }
  * @param steps amount of steps to do
  * @param direction direction to step in
  */
-void motor_step(uint8_t steps, uint8_t direction) {
+void motorStep(uint8_t steps, uint8_t direction) {
     digitalWrite(PIN_MOTOR_DIRECTION, direction);
     while (steps) {
         digitalWrite(PIN_MOTOR_STEP, 1);
@@ -54,8 +54,8 @@ void motor_step(uint8_t steps, uint8_t direction) {
 /**
  * Enable the motor driver
  */
-void motor_enable() { digitalWrite(PIN_MOTOR_ENABLE, 0); }
+void motorEnable() { digitalWrite(PIN_MOTOR_ENABLE, 0); }
 /**
  * Disable the motor driver
  */
-void motor_disable() { digitalWrite(PIN_MOTOR_ENABLE, 1); }
+void motorDisable() { digitalWrite(PIN_MOTOR_ENABLE, 1); }

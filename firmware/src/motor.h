@@ -8,11 +8,11 @@
 
 #include <stdint.h>
 
-void motor_init();
+void motorInit();
 
-void motor_step();
-void motor_step(uint8_t steps);
-void motor_step(uint8_t steps, uint8_t direction);
+void motorStep();
+void motorStep(uint8_t steps);
+void motorStep(uint8_t steps, uint8_t direction);
 
-void motor_enable();
-void motor_disable();
+void motorEnable();
+void motorDisable();

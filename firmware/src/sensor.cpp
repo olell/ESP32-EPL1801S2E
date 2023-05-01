@@ -12,7 +12,7 @@
 /**
  * Init sensor code
  */
-void sensor_init() {
+void sensorInit() {
     pinMode(PIN_SENSOR_HEAD, INPUT);
     pinMode(PIN_SENSOR_PAPER, INPUT);
 }
