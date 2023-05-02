@@ -75,8 +75,9 @@ void headStrobe(uint16_t time) {
  * Calculates head strobe time
  *
  * @param vp supply voltage
+ * @param rowSum sum of all pixels in the current row
  */
-uint16_t headCalculateStrobeTime(float vp) {
+uint16_t headCalculateStrobeTime(float vp, uint16_t rowSum) {
     float rav;
     uint8_t rank = headReadRank();
     if (rank == 0) rav = 190;
@@ -85,7 +86,8 @@ uint16_t headCalculateStrobeTime(float vp) {
     if (rank == 3) rav = 150;
     float w = (pow(vp, 2) * rav) / pow(26.4 + rav, 2);
     float t = sensorReadHeadTemperature();
-    float t1 = (0.230 / w) * (1 + (1.1 / 100.0 * (20 - t)));
+    float a = 1.1;
+    float t1 = (0.230 / w) * (1 + (a / 100.0 * (20 - t)));
     float x = 0;
     if (vp >= 4.2 && vp <= 4.5) {
         if (t >= -5 && t <= 5) x = 240;
@@ -131,5 +133,13 @@ uint16_t headCalculateStrobeTime(float vp) {
     }
     float t2 = (1 + x / 100.0) * t1;
 
-    return t2 * 1000;
+    // Skipping divide correction because I don't understand what "number of
+    // dividing means"...
+    float y = 0;
+    float t3 = (1 + y / 100.0) * t2;
+
+    float z = rowSum / 64;
+    float t4 = (1 + z / 100.0) * t3;
+
+    return t4 * 1000;
 }
