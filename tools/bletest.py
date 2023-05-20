@@ -1,7 +1,7 @@
 import asyncio
 from bleak import BleakClient, BleakScanner
 import time
-
+import sys
 from PIL import Image
 
 
@@ -10,7 +10,7 @@ def convert_image_to_monochrome(image_path, desired_width=384):
     image = Image.open(image_path)
 
     # Convert the image to monochrome
-    image = image.convert("L")
+    image = image.convert("1")
 
     # Scale the image width to the desired width while maintaining the aspect ratio
     width, height = image.size
@@ -45,10 +45,7 @@ def convert_image_to_monochrome(image_path, desired_width=384):
     return rows
 
 
-# Example usage
-image_file = "label.png"
-rows = convert_image_to_monochrome(image_file)
-
+rows = convert_image_to_monochrome(sys.argv[1])
 
 device = "10955197-82B0-18EE-5A5A-C4667246EF86"
 
@@ -62,7 +59,7 @@ async def scan():
         print(d)
 
 
-HEADER = b"\x70" + (b"\x00" * 31)
+HEADER = b"\x70\x0a" + (b"\x00" * 30)
 
 
 async def connect():
@@ -73,13 +70,14 @@ async def connect():
         pc = 0
         for i in range(0, len(rows), 200):
             for j in range(0, 20):
-                output_data = HEADER
+                output_data = b""
+                l = 0
                 for k in range(0, 10):
                     ridx = i + (j * 10) + k
                     if ridx < len(rows):
                         output_data += rows[ridx]
-                    else:
-                        output_data += b"\x00" * 48
+                        l += 1
+                output_data = bytes([0x70, l]) + b"\x00" * 30 + output_data
                 await client.write_gatt_char(write_char, output_data, response=True)
                 pc += 1
                 print("Send packet:", pc)
