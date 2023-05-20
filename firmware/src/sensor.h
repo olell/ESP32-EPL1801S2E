@@ -9,4 +9,16 @@
 
 #include <stdint.h>
 
-void sensor_init();
+// Sensor states
+#define HEAD_UP 0
+#define HEAD_DOWN 1
+#define PAPER 0
+#define NO_PAPER 1
+
+void sensorInit();
+
+uint8_t sensorReadPaper();
+uint8_t sensorReadHead();
+
+float sensorReadMotorTemperature();
+float sensorReadHeadTemperature();
